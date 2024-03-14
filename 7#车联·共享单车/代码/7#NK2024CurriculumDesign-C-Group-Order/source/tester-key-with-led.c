@@ -297,10 +297,14 @@ void show_first_name_Lea()
 
 // author: xxx
 // date: 2023/xx/xx
-// 显示需求员姓氏拼音首字母小写的ASCII码。需求员姓氏“XXX”的拼音首字母小写“X”所对应ASCII码为XXXX XXXXB
+// 显示需求员姓氏拼音首字母小写的ASCII码。需求员姓氏“王”的拼音首字母小写“w”所对应ASCII码为0111 0111B
 void show_first_name_req()
 {
 	/********请在下方区域编写代码及注释，实现利用LED灯显示需求员姓氏拼音首字母小写的ASCII码高4位的功能********/
+	ed_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
+	led_set_status(LED_NAME_LED2, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED3, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED4, LED_STATUS_ON);  															// 1
 
 
 
@@ -313,6 +317,11 @@ void show_first_name_req()
 	mdelay(1000);  																							// 延迟一秒
 
 	/********请在下方区域编写代码及注释，实现利用LED灯显示需求员姓氏拼音首字母小写的ASCII码低4位的功能********/
+
+	ed_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
+	led_set_status(LED_NAME_LED2, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED3, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED4, LED_STATUS_ON);  															// 1
 
 
 
