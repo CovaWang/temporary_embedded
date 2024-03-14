@@ -223,7 +223,7 @@ void system_stage(int tag) 																					// 系统阶段选择函数:1-启动阶段，
 
 // author: 0000 0111B
 // date: 2024/03/13
-// 显示组号的二进制转换格式，组号“XX”转换成8位二进制数为XXXX XXXXB，模板以数字"0"为例，"0"转换成8位二进数为0000 0000B，请按照本组真实组号对本函数进行修改
+// 显示组号的二进制转换格式，组号“07”转换成8位二进制数为0000 0111B，模板以数字"0"为例，"0"转换成8位二进数为0000 0000B，请按照本组真实组号对本函数进行修改
 void show_group_number()
 {
 	/********请在下方区域修改代码及注释，实现利用LED灯显示本组组号二进制形式高4位的功能********/
@@ -260,7 +260,7 @@ void show_group_number()
 
 // author: 0111 1001B
 // date: 2024/03/13
-// 显示组长姓氏拼音首字母小写的ASCII码。组长姓氏“XXX”的拼音首字母小写“X”所对应ASCII码为XXXX XXXXB
+// 显示组长姓氏拼音首字母小写的ASCII码。组长姓氏“杨”的拼音首字母小写“y”所对应ASCII码为0111 1001B
 void show_first_name_Lea()
 {																											// 模板以"长"为例，“长”的拼音首字母小写“z”所对应ASCII码为0111 1010B，请按照本组组长真实姓氏对本函数进行修改
 	/********请在下方区域修改代码及注释，实现利用LED灯显示组长姓氏拼音首字母小写的ASCII码高4位的功能********/
@@ -301,15 +301,10 @@ void show_first_name_Lea()
 void show_first_name_req()
 {
 	/********请在下方区域编写代码及注释，实现利用LED灯显示需求员姓氏拼音首字母小写的ASCII码高4位的功能********/
-	ed_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
+	led_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
 	led_set_status(LED_NAME_LED2, LED_STATUS_ON);  															// 1
 	led_set_status(LED_NAME_LED3, LED_STATUS_ON);  															// 1
 	led_set_status(LED_NAME_LED4, LED_STATUS_ON);  															// 1
-
-
-
-
-
 	/********请在上方区域编写代码及注释，实现利用LED灯显示需求员姓氏拼音首字母小写的ASCII码高4位的功能********/
 
 	mdelay(3000);
@@ -317,16 +312,10 @@ void show_first_name_req()
 	mdelay(1000);  																							// 延迟一秒
 
 	/********请在下方区域编写代码及注释，实现利用LED灯显示需求员姓氏拼音首字母小写的ASCII码低4位的功能********/
-
-	ed_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
+	led_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
 	led_set_status(LED_NAME_LED2, LED_STATUS_ON);  															// 1
 	led_set_status(LED_NAME_LED3, LED_STATUS_ON);  															// 1
 	led_set_status(LED_NAME_LED4, LED_STATUS_ON);  															// 1
-
-
-
-
-
 	/********请在上方区域编写代码及注释，实现利用LED灯显示需求员姓氏拼音首字母小写的ASCII码低4位的功能********/
 
 	mdelay(3000);
