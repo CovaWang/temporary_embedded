@@ -483,15 +483,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：XXX
-	//Date：2024/XX/XX
+	//Author：王舒瑀
+	//Date：2024/03/22
 	//Description：显示需求员姓氏信息
-	//需求员姓氏的汉字为"X"，该姓氏的拼音首字母小写为"X"，其ASCII码为 XXXX XXXXB，转换成4位四进制数为 XXXXQ
+	//需求员姓氏的汉字为"王"，该姓氏的拼音首字母小写为"w"，其ASCII码为 0111 0111B，转换成4位四进制数为 1313Q
 	public void show_first_name_Reg_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示需求员姓氏相关信息的功能********/
 		
+		updateText((float) 1313); 																		//数码管显示4位四进制数
 		
+																										
+		textOrder[2].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[2].setText("需求员已点名"); 																					
+		String str = "王";																				//点阵显示汉字"长"
+		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
+		beepControl(2);  
 		
 		
 		
