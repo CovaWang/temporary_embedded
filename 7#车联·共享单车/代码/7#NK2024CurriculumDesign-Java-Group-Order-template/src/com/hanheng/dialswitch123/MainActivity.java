@@ -1,5 +1,5 @@
 /* *******************************************************
- * XX#NK2024CurriculumDesign-Java-Group-Order-template.c *
+ * 07#NK2024CurriculumDesign-Java-Group-Order-template.c *
  * *******************************************************
  * 代码部分整体操作说明：									 *
  * 1.代码构成：											 *
@@ -406,19 +406,19 @@ public class MainActivity extends Activity implements OnClickListener{
 		}).start();
 	}
 	
-	//Author：XXX
-	//Date：2024/XX/XX
-	//Description：显示组号信息。组号"XX"的汉字为"X"，转换为4位四进制数为 XXXXQ
+	//Author：07
+	//Date：2024/03/20
+	//Description：显示组号信息。组号"07"的汉字为"七"，转换为4位四进制数为 0013Q
 	public void show_group_number_open()
 	{
 																										//模板以数字"0"为例，"0"的汉字为"零"，转换为4位四进制数为 0000Q。
 																										//请按照本组真实组号对本函数进行修改
 		/********请在下方区域修改代码及注释，实现利用点阵和数码管显示本组组号相关信息的功能********/
 		
-		updateText((float) 0); 																			//数码管显示4位四进制数
+		updateText((float) 0013); 																			//数码管显示4位四进制数
 		
 		
-		String str = "零";  
+		String str = "七";  
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets()); 						//点阵显示汉字"零"
 		
 		/********请在上方区域修改代码及注释，实现利用点阵和数码管显示本组组号相关信息的功能********/
@@ -429,21 +429,21 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：XXX
-	//Date：2024/XX/XX
-	//Description：显示组长姓氏信息。组长姓氏的汉字为"X"，该姓氏的拼音首字母小写为"X"，其ASCII码为 XXXX XXXXB，转换成4位四进制数为 XXXXQ
+	//Author：杨冰雪
+	//Date：2024/03/20
+	//Description：显示组长姓氏信息。组长姓氏的汉字为"杨"，该姓氏的拼音首字母小写为"y"，其ASCII码为 0111 1001B，转换成4位四进制数为 1321Q
 	public void show_first_name_lea_open()
 	{
 																										//模板以"长"为例，"长"的拼音首字母小写为"z"，其ASCII码为 0111 1010B，转换成4位四进制数为1322Q
 																										//请按照本组组长真实姓氏对本函数进行修改
 		/********请在下方区域修改代码及注释，实现利用点阵和数码管显示组长姓氏相关信息的功能********/
 		
-		updateText((float) 1322); 																		//数码管显示4位四进制数
+		updateText((float) 1321); 																		//数码管显示4位四进制数
 		
 																										
 		textOrder[0].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
 		textOrder[0].setText("组长已点名"); 																					
-		String str = "长";																				//点阵显示汉字"长"
+		String str = "杨";																				//点阵显示汉字"长"
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   																				//点名正确结束后，蜂鸣器响两声
 		
