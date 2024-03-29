@@ -455,23 +455,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：XXX
-	//Date：2024/XX/XX
+	//Author：彭晓晓
+	//Date：2024/03/20
 	//Description：显示周志员姓氏信息
-	//周志员姓氏的汉字为"X"，该姓氏的拼音首字母小写为"X"，其ASCII码为 XXXX XXXXB，转换成4位四进制数为 XXXXQ
+	//周志员姓氏的汉字为"彭"，该姓氏的拼音首字母小写为"p"，其ASCII码为 0111 0000B，转换成4位四进制数为 1300Q
 	public void show_first_name_log_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示周志员姓氏相关信息的功能********/
 		
+		updateText((float) 1300); 																		//数码管显示4位四进制数
 		
 		
-		
-		
-		
-		
-		
-		
-		
+		textOrder[1].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[1].setText("周志员已点名"); 																					
+		String str = "彭";																				//点阵显示汉字"长"
+		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
+		beepControl(2);   																				//点名正确结束后，蜂鸣器响两声
 		
 		
 		/********请在上方区域编写代码及注释，实现利用点阵和数码管显示周志员姓氏相关信息的功能********/
@@ -502,13 +501,6 @@ public class MainActivity extends Activity implements OnClickListener{
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
 		/********请在上方区域编写代码及注释，实现利用点阵和数码管显示需求员姓氏相关信息的功能********/
 	}
 	
@@ -518,22 +510,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：XXX
-	//Date：2024/XX/XX
+	//Author：王婷睿
+	//Date：2024/03/22
 	//Description：显示优裁员姓氏信息
-	//优裁员姓氏的汉字为"X"，该姓氏的拼音首字母小写为"X"，其ASCII码为 XXXX XXXXB，转换成4位四进制数为 XXXXQ
+	//优裁员姓氏的汉字为"王"，该姓氏的拼音首字母小写为"w"，其ASCII码为 0111 0111B，转换成4位四进制数为 1313
 	public void show_first_name_opt_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示优裁员姓氏相关信息的功能********/
 		
+		updateText((float) 1313); 																		//数码管显示4位四进制数
 		
 		
-		
-		
-		
-		
-		
-		
+		textOrder[3].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[3].setText("优裁员已点名"); 																					
+		String str = "王";																				//点阵显示汉字"长"
+		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
+		beepControl(2);  
 		
 		
 		
@@ -546,23 +538,24 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：XXX
-	//Date：2024/XX/XX
+	//Author：王艺锟
+	//Date：2024/03/20
 	//Description：显示展示员姓氏信息
-	//展示员姓氏的汉字为"X"，该姓氏的拼音首字母小写为"X"，其ASCII码为 XXXX XXXXB，转换成4位四进制数为 XXXXQ
+	//展示员姓氏的汉字为"王"，该姓氏的拼音首字母小写为"w"，其ASCII码为 0111 0111B，转换成4位四进制数为 1313Q
 	public void show_first_name_sho_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示展示员姓氏相关信息的功能********/
 		
+		updateText((float) 1313); 																		//数码管显示4位四进制数
 		
 		
+		textOrder[4].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[4].setText("展示员已点名"); 																					
+		String str = "王";																				//点阵显示汉字"长"
+		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
+		beepControl(2);  
 		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		/********请在上方区域编写代码及注释，实现利用点阵和数码管显示展示员姓氏相关信息的功能********/
