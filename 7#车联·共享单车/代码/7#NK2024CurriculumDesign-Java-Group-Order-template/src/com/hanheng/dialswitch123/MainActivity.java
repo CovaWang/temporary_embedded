@@ -106,6 +106,11 @@ public class MainActivity extends Activity implements OnClickListener{
 	private ToggleButton[] tb = new ToggleButton[8];
 	private Button btnButton;
 	private ImageView image;
+	private ImageView car1;
+	private ImageView car2;
+	private ImageView car3;
+	private ImageView car4;
+	private ImageView car5;
 	private TextView[] textOrder = new TextView[5];
 	private boolean flag;
 	private boolean isFZero; 																			// 记录初始拨码开关是否正确归零
@@ -145,8 +150,17 @@ public class MainActivity extends Activity implements OnClickListener{
 		text[6] = (TextView)findViewById(R.id.textView7);
 		text[7] = (TextView)findViewById(R.id.textView8);
 		btnButton=(Button)findViewById(R.id.button1);
+		car1=(ImageView)findViewById(R.id.car1);
+		car2=(ImageView)findViewById(R.id.car2);
+		car3=(ImageView)findViewById(R.id.car3);
+		car4=(ImageView)findViewById(R.id.car4);
+		car5=(ImageView)findViewById(R.id.car5);
+		car1.setVisibility(car1.GONE);
+		car2.setVisibility(car2.GONE);
+		car3.setVisibility(car3.GONE);
+		car4.setVisibility(car4.GONE);
+		car5.setVisibility(car5.GONE);
 		image=(ImageView)findViewById(R.id.imageView1);
-		
 		textOrder[0] = (TextView)findViewById(R.id.textView11);
 		textOrder[1] = (TextView)findViewById(R.id.textView12);
 		textOrder[2] = (TextView)findViewById(R.id.textView13);
@@ -207,6 +221,10 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.toggleButton2:
 			if(tb[1].isChecked()){
+//				AnimationSet as = new AnimationSet(true);
+//				as.setDuration(1000);
+//				car1.startAnimation(as);
+				car1.setVisibility(car1.VISIBLE);
 				show_first_name_lea_open();
 			}else{
 				show_first_name_lea_close();
@@ -214,7 +232,10 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.toggleButton3:
 			if(tb[2].isChecked()){
-				patternSwitch(2);																		//stage 1：点名阶段·组员点名
+				patternSwitch(2);	
+				//stage 1：点名阶段·组员点名
+				car1.setVisibility(car1.GONE);
+				car2.setVisibility(car1.VISIBLE);
 				show_first_name_log_open();																//四个LED灯代表的四位bit显示为0100B，代表进入点名阶段的组员点名部分
 			}else{
 				show_first_name_log_close();
@@ -222,6 +243,8 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.toggleButton4:
 			if(tb[3].isChecked()){
+				car2.setVisibility(car2.GONE);
+				car3.setVisibility(car3.VISIBLE);
 				show_first_name_Reg_open();
 			}else{
 				show_first_name_Reg_close();
@@ -229,6 +252,8 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.toggleButton5:
 			if(tb[4].isChecked()){
+				car3.setVisibility(car3.GONE);
+				car4.setVisibility(car4.VISIBLE);
 				show_first_name_opt_open();
 			}else{
 				show_first_name_opt_close();
@@ -236,6 +261,8 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.toggleButton6:
 			if(tb[5].isChecked()){
+				car4.setVisibility(car4.GONE);
+				car5.setVisibility(car5.VISIBLE);
 				show_first_name_sho_open();
 			}else{
 				show_first_name_sho_close();
@@ -345,13 +372,14 @@ public class MainActivity extends Activity implements OnClickListener{
 		}
 		btnButton.startAnimation(as);
 		image.startAnimation(as);
+		car5.startAnimation(as);
 		for(int i = 0 ; i < tb.length ; i++){
 			tb[i].setVisibility(tb[i].GONE);
 			text[i].setVisibility(text[i].GONE);
 		}
 		
 		btnButton.setVisibility(btnButton.GONE);
-		
+		car5.setVisibility(car5.GONE);
 		image.setVisibility(image.GONE);
 	}
 	
