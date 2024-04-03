@@ -295,8 +295,8 @@ void show_first_name_Lea()
 	mdelay(1000);
 }
 
-// author: xxx
-// date: 2023/xx/xx
+// author: 王舒瑀
+// date: 2023/03/13
 // 显示需求员姓氏拼音首字母小写的ASCII码。需求员姓氏“王”的拼音首字母小写“w”所对应ASCII码为0111 0111B
 void show_first_name_req()
 {
