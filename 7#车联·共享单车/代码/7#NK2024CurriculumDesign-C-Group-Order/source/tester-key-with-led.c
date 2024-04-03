@@ -371,14 +371,17 @@ void show_first_name_log()
 	mdelay(1000);
 }
 
-// author: xxx
-// date: 2023/xx/xx
-// 显示优裁员姓氏拼音首字母的小写的ASCII码。优裁员姓氏“XXX”的拼音首字母小写“X”所对应ASCII码为XXXX XXXXB
+// author: Opt
+// date: 2023/03/13
+// 显示优裁员姓氏拼音首字母的小写的ASCII码。优裁员姓氏“王婷睿”的拼音首字母小写“w”所对应ASCII码为0111 0111B
 void show_first_name_opt()
 {
 	/********请在下方区域编写代码及注释，实现利用LED灯显示优裁员姓氏拼音首字母小写的ASCII码高4位的功能********/
 
-
+    led_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
+	led_set_status(LED_NAME_LED2, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED3, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED4, LED_STATUS_ON);  															// 1
 
 
 
@@ -390,7 +393,10 @@ void show_first_name_opt()
 
 	/********请在下方区域编写代码及注释，实现利用LED灯显示优裁员姓氏拼音首字母小写的ASCII码低4位的功能********/
 
-
+    led_set_status(LED_NAME_LED1, LED_STATUS_OFF); 															// 0
+	led_set_status(LED_NAME_LED2, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED3, LED_STATUS_ON);  															// 1
+	led_set_status(LED_NAME_LED4, LED_STATUS_ON);  															// 1
 
 
 
