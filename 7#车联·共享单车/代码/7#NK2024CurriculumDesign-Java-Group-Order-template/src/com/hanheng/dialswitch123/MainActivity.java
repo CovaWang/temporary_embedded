@@ -51,10 +51,10 @@
  *					其中重载的部分是调用了封装好的com/hanheng/a53/seg7/Seg7Class.java的Seg7Class类的Seg7Show方法实现的，而Seg7Show的实现
  *					是通过调用C语言编译好的seg7-jni.so库来直接对硬件进行操作的，具体的位置在/libs目录下。
  *
- *【问题定位】Q1(..)
- *【问题表述】
- *【解决状态】
- *【解决策略】
+ *【问题定位】Q1（NK2024-07#-Lea)
+ *【问题表述】如何在eclipse for Java中导入指定项目
+ *【解决状态】已解决（NK2024-07#-Log)
+ *【解决策略】需要先选择一个项目（可以任意选择），进入软件界面后再从左侧任务栏中选择所要导入的文件，即可成功导入
  *
  *【问题定位】Q2(...)
  *【问题表述】
@@ -62,13 +62,14 @@
  *【解决策略】
  *
  * ********************认  知  发  问  部  分********************/
+ 
 
 /* ********************总  结  展  示  部  分********************
  *【总结展示1】NK2024-01#-Log
  *  通过java的代码实现，进一步熟悉了实验箱的硬件环境，掌握了通过拨码开关的方式实现对点阵、数码管等的控制
  *
- *【总结展示2】
- *
+ *【总结展示2】NK2024-07#-Log
+ *通过java代码的实现，组内成员一起合作实现了实验箱的点名功能，共同成长和进步，在此过程中也进一步掌握了对java的运用，以及对实验箱的操作
  *
  * ********************总  结  展  示  部  分********************/
 
@@ -447,7 +448,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		
 		
 		String str = "七";  
-		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets()); 						//点阵显示汉字"零"
+		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets()); 						//点阵显示汉字"七"
 		
 		/********请在上方区域修改代码及注释，实现利用点阵和数码管显示本组组号相关信息的功能********/
 	}
@@ -471,7 +472,7 @@ public class MainActivity extends Activity implements OnClickListener{
 																										
 		textOrder[0].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
 		textOrder[0].setText("组长已点名"); 																					
-		String str = "杨";																				//点阵显示汉字"长"
+		String str = "杨";																				//点阵显示汉字"杨"
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   																				//点名正确结束后，蜂鸣器响两声
 		
@@ -494,9 +495,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText((float) 1300); 																		//数码管显示4位四进制数
 		
 		
-		textOrder[1].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[1].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"周志员已点名"
 		textOrder[1].setText("周志员已点名"); 																					
-		String str = "彭";																				//点阵显示汉字"长"
+		String str = "彭";																				//点阵显示汉字"彭"
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   																				//点名正确结束后，蜂鸣器响两声
 		
@@ -521,9 +522,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText((float) 1313); 																		//数码管显示4位四进制数
 		
 																										
-		textOrder[2].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[2].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"需求员已点名"
 		textOrder[2].setText("需求员已点名"); 																					
-		String str = "王";																				//点阵显示汉字"长"
+		String str = "王";																				//点阵显示汉字"王"
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);  
 		
@@ -549,9 +550,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText((float) 1313); 																		//数码管显示4位四进制数
 		
 		
-		textOrder[3].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[3].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"优裁员已点名"
 		textOrder[3].setText("优裁员已点名"); 																					
-		String str = "王";																				//点阵显示汉字"长"
+		String str = "王";																				//点阵显示汉字"王"
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);  
 		
@@ -577,9 +578,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText((float) 1313); 																		//数码管显示4位四进制数
 		
 		
-		textOrder[4].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"组长已点名"
+		textOrder[4].setBackgroundColor(Color.rgb(0, 255, 0));											//标签变为绿色，显示"展示员已点名"
 		textOrder[4].setText("展示员已点名"); 																					
-		String str = "王";																				//点阵显示汉字"长"
+		String str = "王";																				//点阵显示汉字"王"
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);  
 		
