@@ -417,18 +417,18 @@ public class MainActivity extends Activity implements OnClickListener{
 		}).start();
 	}
 	
-	//Author：07
-	//Date：2024/04/10
-	//Description：显示组号信息。组号"07"的汉字为"七"，转换为4位四进制数为 0013Q
+	//Author：liuwei
+	//Date：2022/03/25
+	//Description：显示组号信息。组号"10"的汉字为"十"，转换为4位四进制数为 0022Q
 	public void show_group_number_open()
 	{
 		//模板以数字"0"为例，"0"的汉字为"零"，转换为4位四进制数为 0000Q，请按照本组真实组号对本函数进行修改
 		/********请在下方区域修改代码及注释，实现利用点阵和数码管显示本组组号相关信息的功能********/
 		
-		updateText((float) 0013); //数码管显示4位四进制数
+		updateText((float) 0.022); //数码管显示4位四进制数
 		
-		//点阵显示汉字"七"
-		String str = "七";  
+		//点阵显示汉字"十"
+		String str = "十";  
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets()); 
 		
 		/********请在上方区域修改代码及注释，实现利用点阵和数码管显示本组组号相关信息的功能********/
@@ -440,24 +440,24 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：杨冰雪
-	//Date：2024/04/10
+	//Author：liuwei
+	//Date：2022/03/25
 	//Description：显示组长姓氏信息
-	//组长姓氏的汉字为"杨"，该姓氏的拼音首字母小写为"y"，其ASCII码为 0111 1001，转换成4位四进制数为 1231Q
+	//组长姓氏的汉字为"刘"，该姓氏的拼音首字母小写为"l"，其ASCII码为 0110 1100B，转换成4位四进制数为 1230Q
 	public void show_first_name_lea_open()
 	{
 		//模板以"长"为例，"长"的拼音首字母小写为"z"，其ASCII码为 0111 1010B，转换成4位四进制数为1322Q
 		//请按照本组组长真实姓氏对本函数进行修改
 		/********请在下方区域修改代码及注释，实现利用点阵和数码管显示组长姓氏相关信息的功能********/
 		
-		updateText((float) 1321); //数码管显示4位四进制数
+		updateText((float) 1230); //数码管显示4位四进制数
 		
 		//标签变为绿色，显示"组长已点名"
 		textOrder[0].setBackgroundColor(Color.rgb(0, 255, 0));
 		textOrder[0].setText("组长已点名"); 
 		
 		//点阵显示汉字"刘"
-		String str = "杨";
+		String str = "刘";
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   //点名正确结束后，蜂鸣器响两声
 		
@@ -470,22 +470,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：彭晓晓
-	//Date：2024/04/10
+	//Author：zhangzhaoyang
+	//Date：2022/03/25
 	//Description：显示周志员姓氏信息
-	//周志员姓氏的汉字为"彭"，该姓氏的拼音首字母小写为"p"，其ASCII码为 0111 0000B，转换成4位四进制数为 1300Q
+	//周志员姓氏的汉字为"张"，该姓氏的拼音首字母小写为"z"，其ASCII码为 0111 1010B，转换成4位四进制数为 1322Q
 	public void show_first_name_log_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示周志员姓氏相关信息的功能********/
 		
-		updateText((float) 1300); //数码管显示4位四进制数
+		updateText((float) 1322); //数码管显示4位四进制数
 		
 		//标签变为绿色，显示"周志员已点名"
 		textOrder[1].setBackgroundColor(Color.rgb(0, 255, 0));
 		textOrder[1].setText("周志员已点名"); 
 		
-		//点阵显示汉字"彭"
-		String str = "彭";
+		//点阵显示汉字"张"
+		String str = "张";
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   //点名正确结束后，蜂鸣器响两声
 		
@@ -498,23 +498,23 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：王舒瑀
-	//Date：2024/04/10
+	//Author：zangguosheng
+	//Date：2022/03/25
 	//Description：显示需求员姓氏信息
-	//需求员姓氏的汉字为"王"，该姓氏的拼音首字母小写为"w"，其ASCII码为 0111 0111B，转换成4位四进制数为 1313Q
+	//需求员姓氏的汉字为"臧"，该姓氏的拼音首字母小写为"z"，其ASCII码为 0111 1010B，转换成4位四进制数为 1322Q
 	public void show_first_name_Req_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示需求员姓氏相关信息的功能********/
 		
 		
-		updateText((float) 1313); //数码管显示4位四进制数
+		updateText((float) 1322); //数码管显示4位四进制数
 		
 		//标签变为绿色，显示"需求员已点名"
 		textOrder[2].setBackgroundColor(Color.rgb(0, 255, 0));
 		textOrder[2].setText("需求员已点名"); 
 		
-		//点阵显示汉字"王"
-		String str = "王";
+		//点阵显示汉字"臧"
+		String str = "臧";
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   //点名正确结束后，蜂鸣器响两声
 		
@@ -527,22 +527,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：王婷睿
-	//Date：2024/04/10
+	//Author：biandi
+	//Date：2022/03/25
 	//Description：显示优裁员姓氏信息
-	//优裁员姓氏的汉字为"王"，该姓氏的拼音首字母小写为"w"，其ASCII码为 0111 0111B，转换成4位四进制数为 1313Q
+	//优裁员姓氏的汉字为"边"，该姓氏的拼音首字母小写为"b"，其ASCII码为 0110 0010B，转换成4位四进制数为 1202Q
 	public void show_first_name_opt_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示优裁员姓氏相关信息的功能********/
 		
-		updateText((float) 1313); //数码管显示4位四进制数
+		updateText((float) 1202); //数码管显示4位四进制数
 		
 		//标签变为绿色，显示"优裁员已点名"
 		textOrder[3].setBackgroundColor(Color.rgb(0, 255, 0));
 		textOrder[3].setText("优裁员已点名"); 
 		
-		//点阵显示汉字"王"
-		String str = "王";
+		//点阵显示汉字"边"
+		String str = "边";
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   //点名正确结束后，蜂鸣器响两声
 		
@@ -555,22 +555,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		updateText(0);
 	}
 	
-	//Author：王艺琨
-	//Date：2024/04/10
+	//Author：lijiawei
+	//Date：2022/03/25
 	//Description：显示展示员姓氏信息
-	//展示员姓氏的汉字为"王"，该姓氏的拼音首字母小写为"w"，其ASCII码为 0111 0111B，转换成4位四进制数为 1313Q
+	//展示员姓氏的汉字为"李"，该姓氏的拼音首字母小写为"l"，其ASCII码为 0110 1100B，转换成4位四进制数为 1230Q
 	public void show_first_name_sho_open()
 	{
 		/********请在下方区域编写代码及注释，实现利用点阵和数码管显示展示员姓氏相关信息的功能********/
 
-		updateText((float) 1313); //数码管显示4位四进制数
+		updateText((float) 1230); //数码管显示4位四进制数
 		
 		//标签变为绿色，显示"展示员已点名"
 		textOrder[4].setBackgroundColor(Color.rgb(0, 255, 0));
 		textOrder[4].setText("展示员已点名"); 
 		
-		//点阵显示汉字"王"
-		String str = "王";
+		//点阵显示汉字"李"
+		String str = "李";
 		byte[][] data = FontClass.getInstance().setContent(str,this.getAssets());
 		beepControl(2);   //点名正确结束后，蜂鸣器响两声
 		
