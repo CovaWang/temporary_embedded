@@ -1,6 +1,16 @@
 package com.hanheng.dialswitch;
 
 import com.hanheng.dialswitch1.R;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.widget.EditText;
+
 import android.os.PowerManager;
 import android.app.Activity;
 import android.os.Bundle;
@@ -99,7 +109,8 @@ public class secondactivity extends Activity implements SensorEventListener{
 	private long p_time = 0;
 	
 	//指南针
-	private TextView cpass_text;
+	private EditText cpass_text1;
+	private EditText cpass_text2;
 	private ImageView cpass_img;
 	SensorManager sensor;//SensorManager对象引用
 	float currentDegree = 0f; //指南针图片转过的角度
@@ -212,8 +223,41 @@ public class secondactivity extends Activity implements SensorEventListener{
         });
 		
 		//指南针
-		cpass_text = (TextView)findViewById(R.id.compass_display).findViewById(R.id.compass_text);
+		cpass_text1 = (EditText)findViewById(R.id.compass_display).findViewById(R.id.compass_text1);
+		cpass_text2 = (EditText)findViewById(R.id.compass_display).findViewById(R.id.compass_text2);
+		//输入还车坐标
+		cpass_text1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	String userInput = cpass_text1.getText().toString();
+            }
+        });
+		
+		
+        //获取地图照片
 		cpass_img = (ImageView)findViewById(R.id.compass_display).findViewById(R.id.compass_img);
+		// 假设你有一个名为bitmap的Bitmap对象
+		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.map);
+
+		// 创建一个新的Bitmap对象，作为绘制区域
+		Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+
+		// 创建一个Canvas对象，用于在Bitmap上绘制
+		Canvas canvas = new Canvas(mutableBitmap);
+
+		// 创建一个Paint对象，用于指定绘制属性
+		Paint paint = new Paint();
+		// 设置颜色为透明红色（ARGB格式，红色最大，透明度最大）
+		paint.setColor(Color.argb(128, 255, 0, 0)); // 透明度为128，红色为255，绿色和蓝色为0
+		paint.setStyle(Paint.Style.FILL); // 填充矩形区域
+
+		// 绘制矩形区域
+		Rect rect = new Rect(450, 300, 1050, 550);
+		canvas.drawRect(rect, paint);
+
+		// 将绘制后的Bitmap对象显示在ImageView或其他视图中
+		cpass_img.setImageBitmap(mutableBitmap);
+		
 		sensor = (SensorManager) getSystemService(SENSOR_SERVICE);//获得SensorManager
 		//获取方向传感器
         Sensor type_compass = sensor.getDefaultSensor(Sensor.TYPE_ORIENTATION);
@@ -388,7 +432,8 @@ public class secondactivity extends Activity implements SensorEventListener{
                 float degree = event.values[0]; //获取z转过的角度
 				// 设定角度的显示格式
 				// 保留 1 位小数
-                cpass_text.setText(String.format("%.1f", event.values[0]));
+                cpass_text1.setText(String.format("%.1f", event.values[0]));
+                cpass_text2.setText(String.format("%.1f", event.values[0]));
                 //穿件旋转动画
 				// 使用 RotateAnimation 的方法
                 RotateAnimation ra = new RotateAnimation(currentDegree, -degree, Animation.RELATIVE_TO_SELF, 0.5f

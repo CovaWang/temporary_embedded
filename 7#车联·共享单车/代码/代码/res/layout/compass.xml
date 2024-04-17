@@ -13,17 +13,27 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
-			android:text="实时方位角度："
+			android:text="停车坐标："
 			android:textSize="16dp"
 			android:layout_weight="1" />
 	    
-	    <TextView
-	        android:id="@+id/compass_text"
+	    <EditText
+	        android:id="@+id/compass_text1"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
-			android:text="XXX °"
-			android:textSize="16dp"
+			android:hint="0"
+			android:textSize="16sp"
+			android:textColor="#8A2BE2"
+			android:layout_weight="1" />
+	    
+	    <EditText
+	        android:id="@+id/compass_text2"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:hint="0"
+			android:textSize="16sp"
 			android:textColor="#8A2BE2"
 			android:layout_weight="1" />
 	    
@@ -34,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:src="@drawable/compass1"
+        android:src="@drawable/map"
         android:layout_weight="1" />
 
 </LinearLayout>
