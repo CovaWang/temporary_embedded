@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;map.jpg&apos; to &apos;drawable&apos;&#x0D;&#x0A;- Original project: &apos;10#dialswitch-group-order&apos;&#x0D;&#x0A;- Destination element: &apos;drawable&apos;&#x0D;&#x0A;- Original element: &apos;map.jpg&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" element1="res/drawable-hdpi/map.jpg" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1713352628597" target="res/drawable" units="0" version="1.0"/>
-</session>
