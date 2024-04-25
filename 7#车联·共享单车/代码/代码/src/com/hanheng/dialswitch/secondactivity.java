@@ -2,6 +2,9 @@ package com.hanheng.dialswitch;
 
 import com.hanheng.dialswitch1.R;
 import android.graphics.drawable.GradientDrawable;
+import java.util.Random;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,6 +13,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+//import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.PowerManager;
 import android.app.Activity;
@@ -112,13 +120,25 @@ public class secondactivity extends Activity implements SensorEventListener{
 	private EditText cpass_text1;
 	private EditText cpass_text2;
 	
+	//停车坐标确定按钮
+	private Button cpass_btn;
+	
 	//地图
 	private ImageView cpass_img;
 	SensorManager sensor;//SensorManager对象引用
 	float currentDegree = 0f; //指南针图片转过的角度
 	
-	//地图坐标
-	private TextView cpass_dot1;
+	//地图当前位置对应的图片
+	private ImageView cpass_sit;
+	
+	//记录红包车奖励
+	private double red_reward=0.0;
+	//红包车总上限
+	private double reward_sum_max=1.0;
+	//红包车单次最高记录
+	private double reward_max=0.5;
+	//红包车单次最低记录
+	private double reward_min=0.1;
 	
 	//存储故障信息
 	//public String guzhang1;
@@ -238,9 +258,29 @@ public class secondactivity extends Activity implements SensorEventListener{
             }
         });
 		
-		
         //获取地图照片
 		cpass_img = (ImageView)findViewById(R.id.compass_display).findViewById(R.id.compass_img);
+		
+		//获取当前位置图片
+		cpass_sit=(ImageView)findViewById(R.id.compass_display).findViewById(R.id.compass_sit);
+		
+		//获取当前位置的布局参数
+		RelativeLayout.LayoutParams sit_params=(RelativeLayout.LayoutParams)cpass_sit.getLayoutParams();
+		
+		//生成随机的位置坐标
+		int minX=90;
+		int maxX=330;
+		int minY=85;
+		int maxY=210;
+		//生成随机的x和y坐标
+		Random random=new  Random();
+		int randomX=random.nextInt(maxX-minX+1)+minX;
+		int randomY=random.nextInt(maxY-minY+1)+minY;
+		
+		//设置新的左边距
+		sit_params.leftMargin=randomX; 
+		//设置新的上边距
+		sit_params.topMargin=randomY; 
 		
 		// 假设你有一个名为bitmap的Bitmap对象
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.map);
@@ -256,14 +296,19 @@ public class secondactivity extends Activity implements SensorEventListener{
 		// 设置颜色为透明红色（ARGB格式，红色最大，透明度最大）
 		paint.setColor(Color.argb(128, 255, 0, 0)); // 透明度为128，红色为255，绿色和蓝色为0
 		paint.setStyle(Paint.Style.FILL); // 填充矩形区域
-
+		
+		//中心区域左上坐标
+		int Rect_left=450;
+		//中心区域左上纵坐标
+		int Rect_up=300;
+		//中心区域右下横坐标
+		int Rect_right=1050;
+		//中心区域右下纵坐标
+		int Rect_down=550;
 		// 绘制矩形区域
-		Rect rect = new Rect(450, 300, 1050, 550);
+		Rect rect = new Rect(Rect_left, Rect_up, Rect_right, Rect_down);
 		canvas.drawRect(rect, paint);
 		
-		//停车按钮显示
-//		cpass_button = (Button)findViewById(R.id.compass_display).findViewById(R.id.compass_Button);
-
 
 		// 将绘制后的Bitmap对象显示在ImageView或其他视图中
 		cpass_img.setImageBitmap(mutableBitmap);
@@ -287,6 +332,54 @@ public class secondactivity extends Activity implements SensorEventListener{
 		display = (View) findViewById(R.id.display5);
 		counterText = (TextView) display.findViewById(R.id.counterText);
 		int err = Seg7Class.Init();
+		
+		//停车坐标确定按钮
+		cpass_btn=(Button)findViewById(R.id.compass_display).findViewById(R.id.compass_btn);
+		
+		//询问是否按照规定路线行驶，按照规定路线可能获得红包车
+		cpass_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	// 创建 AlertDialog.Builder 对象
+                AlertDialog.Builder builder = new AlertDialog.Builder (secondactivity.this);
+                builder.setTitle("路线规划");
+                builder.setMessage("您是否打算按照规定路线行驶？如果按照规定路线行驶可能获得红包！");
+                
+                // 添加“是”按钮，并设置点击事件监听器
+                builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    	//判断红包奖励是否已经达到上限
+                    	if(red_reward>=reward_sum_max){
+                    		Toast.makeText(getApplicationContext(), "红包已达上限！！！", Toast.LENGTH_SHORT).show();
+                    	}
+                    	else{
+                    		//创建一个Random对象
+                        	Random random=new Random();
+                        	//生成0.1-0.5之间的随机数
+                        	double randomNum=reward_min+(reward_max-reward_min)*random.nextDouble();
+                            //随机产生红包车
+                        	red_reward+=randomNum;
+                        	Toast.makeText(getApplicationContext(), 
+                        			"获得红包奖励："+randomNum+"累计红包奖励："+red_reward, Toast.LENGTH_LONG).show();
+                    	}
+                    }
+                });
+
+                // 添加“否”按钮，并设置点击事件监听器
+                builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //没有任何奖励
+                    	red_reward+=0;
+                    }
+                });
+
+                // 创建并显示对话框
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 		
 		//还车退出按钮
 		button1=(Button)findViewById(R.id.button2_1);
