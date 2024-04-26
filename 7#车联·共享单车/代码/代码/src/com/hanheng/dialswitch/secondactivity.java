@@ -80,6 +80,7 @@ import android.widget.ToggleButton;
 import android.widget.ImageView;
 import android.media.MediaPlayer;
 
+
 public class secondactivity extends Activity implements SensorEventListener{
 	// 数码管组件
 	private View display;
@@ -247,6 +248,16 @@ public class secondactivity extends Activity implements SensorEventListener{
             }
         });
 		
+		/**
+          *编写人：G7Lea杨冰雪，G7Req王舒瑀
+          *编写时间：2024/4/17
+          *新增代码量：32行
+          *新增注释量：20行
+          *为共享单车获得红包奖励的区域添加特殊红色中心区域
+          *利用Bitmap在原有地图上添加单车有红包奖励的红色中心区域
+		  @param v
+        */
+		////////////////////52行码释扩充性引导////////////////////
 		//指南针
 		cpass_text1 = (EditText)findViewById(R.id.compass_display).findViewById(R.id.compass_text1);
 		cpass_text2 = (EditText)findViewById(R.id.compass_display).findViewById(R.id.compass_text2);
@@ -333,9 +344,20 @@ public class secondactivity extends Activity implements SensorEventListener{
 		counterText = (TextView) display.findViewById(R.id.counterText);
 		int err = Seg7Class.Init();
 		
+		///////////////////////56行码释扩充性引导///////////////////////
 		//停车坐标确定按钮
 		cpass_btn=(Button)findViewById(R.id.compass_display).findViewById(R.id.compass_btn);
-		
+
+		/**
+          *编写人：G7Opt王婷睿，G7Log彭晓晓
+          *编写时间：2024/4/24
+          *新增代码量：34行
+          *新增注释量：22行
+          *为停车坐标坐标确定按钮，询问是否按照规定路线行驶，按照规定路线可能获得红包车
+          *利用Button来完成停车坐标确定按钮，来确定停车的坐标是否符合红包奖励条件
+          *利用消息框来询问是否按照规定路线形势，如果按照已给路线行驶，则可获得相应的红包奖励
+		  @param v，dialog，which
+         */
 		//询问是否按照规定路线行驶，按照规定路线可能获得红包车
 		cpass_btn.setOnClickListener(new View.OnClickListener() {
             @Override
