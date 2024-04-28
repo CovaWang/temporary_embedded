@@ -140,6 +140,12 @@ public class secondactivity extends Activity implements SensorEventListener{
 	private double reward_max=0.5;
 	//红包车单次最低记录
 	private double reward_min=0.1;
+	//白包车单次最高惩罚
+	private double penalty_max=-0.5;
+	//白包车车单次最低惩罚
+	private double penalty_min=-0.1;
+	//白包车惩罚上限
+	private double penalty_sum_max=-1.0;
 	
 	//存储故障信息
 	//public String guzhang1;
@@ -293,6 +299,7 @@ public class secondactivity extends Activity implements SensorEventListener{
 		//设置新的上边距
 		sit_params.topMargin=randomY; 
 		
+		cpass_sit.setLayoutParams(sit_params);
 		// 假设你有一个名为bitmap的Bitmap对象
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.map);
 
@@ -383,7 +390,7 @@ public class secondactivity extends Activity implements SensorEventListener{
                             //随机产生红包车
                         	red_reward+=randomNum;
                         	Toast.makeText(getApplicationContext(), 
-                        			"获得红包奖励："+randomNum+"累计红包奖励："+red_reward, Toast.LENGTH_LONG).show();
+                        			"获得红包奖励："+randomNum+"累计金额为："+red_reward, Toast.LENGTH_LONG).show();
                     	}
                     }
                 });
@@ -400,6 +407,52 @@ public class secondactivity extends Activity implements SensorEventListener{
                 // 创建并显示对话框
                 AlertDialog dialog = builder.create();
                 dialog.show();
+                
+                /*更新单车坐标*/
+          	  //获取当前位置图片
+                 ImageView cpass_sit_new=(ImageView)findViewById(R.id.compass_display).findViewById(R.id.compass_sit);
+                //获取当前位置的布局参数
+          		RelativeLayout.LayoutParams sit_params_new=(RelativeLayout.LayoutParams)cpass_sit_new.getLayoutParams();
+          	  // 获取输入的数字字符串 
+          		EditText editText1=(EditText)findViewById(R.id.compass_display).findViewById(R.id.compass_text1);
+          		EditText editText2=(EditText)findViewById(R.id.compass_display).findViewById(R.id.compass_text2);
+          		String inputText1 = editText1.getText().toString();
+          		String inputText2 = editText2.getText().toString();
+          	  // 尝试将输入的数字字符串转换为整形
+          		int intValue1 = Integer.parseInt(inputText1);
+          		int intValue2 = Integer.parseInt(inputText2);
+          	  //图上坐标换算
+          		int Value1=intValue1*7/25-7;
+          		int Value2=intValue2*18/55+10;
+          	  //设置单车坐标参数
+          		sit_params_new.leftMargin=Value1; 
+          		sit_params_new.topMargin=Value2;
+          	 //更新坐标
+          		cpass_sit_new.setLayoutParams(sit_params_new);
+          		
+          	// 判断更新坐标的位置
+                if((intValue1>450&&intValue1<1050)&&(intValue2>300&&intValue2<550)){ //判断为白包车
+                	//创建一个Random对象
+                	Random random=new Random();
+                	//生成0.1-0.5之间的随机数
+                	double randomNum=penalty_min+(penalty_max-penalty_min)*random.nextDouble();
+                    //随机产生红包车
+                	red_reward+=randomNum;
+                	//弹框显示
+                	Toast.makeText(getApplicationContext(), 
+                			"获得白包惩罚："+randomNum+"累计金额为为："+red_reward, Toast.LENGTH_LONG).show();
+                }
+                else{ //获取红包奖励
+                	//创建一个Random对象
+                	Random random=new Random();
+                	//生成0.1-0.5之间的随机数
+                	double randomNum=reward_min+(reward_max-reward_min)*random.nextDouble();
+                    //随机产生红包车
+                	red_reward+=randomNum;
+                	//弹框显示
+                	Toast.makeText(getApplicationContext(), 
+                			"获得红包奖励："+randomNum+"累计金额为为："+red_reward, Toast.LENGTH_LONG).show();
+                }
             }
         });
 		

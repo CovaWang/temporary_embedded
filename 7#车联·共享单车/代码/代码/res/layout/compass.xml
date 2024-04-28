@@ -66,7 +66,7 @@
         android:src="@drawable/situation"
         android:layout_weight="1" />
    
-    <!-- 左下点 -->
+    <!-- 左下点 (225,275)-->
      <TextView
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -76,7 +76,7 @@
          android:text="(450,550)"
          android:textColor="#FF0000"
          android:textSize="16dp" />
-     <!-- 右下点 -->
+     <!-- 右下点(525,275) -->
      <TextView
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -86,7 +86,7 @@
          android:text="(1050,550)"
          android:textColor="#FF0000"
          android:textSize="16dp" />
-     <!-- 右上点 -->
+     <!-- 右上点 (525,150)-->
      <TextView
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -96,7 +96,7 @@
          android:text="(1050,300)"
          android:textColor="#FF0000"
          android:textSize="16dp" />
-	  <!-- 左上点 -->
+	  <!-- 左上点 (225,150)-->
       <TextView
          android:layout_width="match_parent"
          android:layout_height="match_parent"
