@@ -300,37 +300,67 @@ public class secondactivity extends Activity implements SensorEventListener{
 		sit_params.topMargin=randomY; 
 		
 		cpass_sit.setLayoutParams(sit_params);
+		
+		/*----------------白包区域绘制------------------*/
 		// 假设你有一个名为bitmap的Bitmap对象
-		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.map);
+		Bitmap bitmapw = BitmapFactory.decodeResource(getResources(), R.drawable.map);
 
 		// 创建一个新的Bitmap对象，作为绘制区域
-		Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+		Bitmap mutableBitmapw = bitmapw.copy(Bitmap.Config.ARGB_8888, true);
 
 		// 创建一个Canvas对象，用于在Bitmap上绘制
-		Canvas canvas = new Canvas(mutableBitmap);
+		Canvas canvasw = new Canvas(mutableBitmapw);
 
 		// 创建一个Paint对象，用于指定绘制属性
-		Paint paint = new Paint();
+		Paint paintw = new Paint();
 		// 设置颜色为透明红色（ARGB格式，红色最大，透明度最大）
-		paint.setColor(Color.argb(128, 255, 0, 0)); // 透明度为128，红色为255，绿色和蓝色为0
-		paint.setStyle(Paint.Style.FILL); // 填充矩形区域
+		paintw.setColor(Color.argb(128, 200, 200, 200)); // 透明度为128，红色为255，绿色和蓝色为0
+		paintw.setStyle(Paint.Style.FILL); // 填充矩形区域
 		
 		//中心区域左上坐标
-		int Rect_left=450;
+		int Rect_leftw=650;
 		//中心区域左上纵坐标
-		int Rect_up=300;
+		int Rect_upw=350;
 		//中心区域右下横坐标
-		int Rect_right=1050;
+		int Rect_rightw=850;
 		//中心区域右下纵坐标
-		int Rect_down=550;
+		int Rect_downw=650;
 		// 绘制矩形区域
-		Rect rect = new Rect(Rect_left, Rect_up, Rect_right, Rect_down);
-		canvas.drawRect(rect, paint);
+		Rect rectw = new Rect(Rect_leftw, Rect_upw, Rect_rightw, Rect_downw);
+		canvasw.drawRect(rectw, paintw);
+
+		/*---------------红包区域绘制---------------*/
+		// 假设你有一个名为bitmap的Bitmap对象
+		Bitmap bitmapr = BitmapFactory.decodeResource(getResources(), R.drawable.map);
+
+		// 创建一个新的Bitmap对象，作为绘制区域
+		Bitmap mutableBitmapr = bitmapr.copy(Bitmap.Config.ARGB_8888, true);
+
+		// 创建一个Canvas对象，用于在Bitmap上绘制
+		Canvas canvasr = new Canvas(mutableBitmapr);
+
+		// 创建一个Paint对象，用于指定绘制属性
+		Paint paintr = new Paint();
+		// 设置颜色为透明红色（ARGB格式，红色最大，透明度最大）
+		paintr.setColor(Color.argb(128, 250, 0, 0)); // 透明度为128，红色为255，绿色和蓝色为0
+		paintr.setStyle(Paint.Style.FILL); // 填充矩形区域
 		
+		//中心区域左上坐标
+		int Rect_leftr=310;
+		//中心区域左上纵坐标
+		int Rect_upr=200;
+		//中心区域右下横坐标
+		int Rect_rightr=480;
+		//中心区域右下纵坐标
+		int Rect_downr=550;
+		// 绘制矩形区域
+		Rect rectr = new Rect(Rect_leftr, Rect_upr, Rect_rightr, Rect_downr);
+		canvasw.drawRect(rectr, paintr);
 
 		// 将绘制后的Bitmap对象显示在ImageView或其他视图中
-		cpass_img.setImageBitmap(mutableBitmap);
+		cpass_img.setImageBitmap(mutableBitmapw);
 		
+		/*----------------------------------------------*/
 		sensor = (SensorManager) getSystemService(SENSOR_SERVICE);//获得SensorManager
 		//获取方向传感器
         Sensor type_compass = sensor.getDefaultSensor(Sensor.TYPE_ORIENTATION);
@@ -436,27 +466,42 @@ public class secondactivity extends Activity implements SensorEventListener{
           		cpass_sit_new.setLayoutParams(sit_params_new);
           		
           	// 判断更新坐标的位置
-                if((intValue1>450&&intValue1<1050)&&(intValue2>300&&intValue2<550)){ //判断为白包车
-                	//创建一个Random对象
-                	Random random=new Random();
-                	//生成0.1-0.5之间的随机数
-                	double randomNum=penalty_min+(penalty_max-penalty_min)*random.nextDouble();
-                    //随机产生红包车
-                	red_reward+=randomNum;
-                	//弹框显示
-                	Toast.makeText(getApplicationContext(), 
-                			"获得白包惩罚："+randomNum+"累计金额为为："+red_reward, Toast.LENGTH_LONG).show();
+                if((intValue1>650&&intValue1<850)&&(intValue2>350&&intValue2<650)){ //判断为白包车
+                	if(red_reward<=penalty_sum_max){
+                		Toast.makeText(getApplicationContext(), "白包已达上限！！！", Toast.LENGTH_SHORT).show();
+                	}
+                	else{
+                		//创建一个Random对象
+                    	Random random=new Random();
+                    	//生成0.1-0.5之间的随机数
+                    	double randomNum=penalty_min+(penalty_max-penalty_min)*random.nextDouble();
+                        //随机产生红包车
+                    	red_reward+=randomNum;
+                    	//弹框显示
+                    	Toast.makeText(getApplicationContext(), 
+                    			"获得白包惩罚："+randomNum+"累计金额为为："+red_reward, Toast.LENGTH_LONG).show();
+                	}
                 }
-                else{ //获取红包奖励
-                	//创建一个Random对象
-                	Random random=new Random();
-                	//生成0.1-0.5之间的随机数
-                	double randomNum=reward_min+(reward_max-reward_min)*random.nextDouble();
-                    //随机产生红包车
-                	red_reward+=randomNum;
-                	//弹框显示
-                	Toast.makeText(getApplicationContext(), 
-                			"获得红包奖励："+randomNum+"累计金额为为："+red_reward, Toast.LENGTH_LONG).show();
+                else if((intValue1>310&&intValue1<480)&&(intValue2>200&&intValue2<550)) 
+                { 
+                	if(red_reward>=reward_sum_max){
+                		Toast.makeText(getApplicationContext(), "红包已达上限！！！", Toast.LENGTH_SHORT).show();
+                	}
+                	else{
+                		//获取红包奖励
+                    	//创建一个Random对象
+                    	Random random=new Random();
+                    	//生成0.1-0.5之间的随机数
+                    	double randomNum=reward_min+(reward_max-reward_min)*random.nextDouble();
+                        //随机产生红包车
+                    	red_reward+=randomNum;
+                    	//弹框显示
+                    	Toast.makeText(getApplicationContext(), 
+                    			"获得红包奖励："+randomNum+"累计金额为为："+red_reward, Toast.LENGTH_LONG).show();
+                	}
+                }
+                else{
+                	Toast.makeText(getApplicationContext(), "无奖励！！！", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -468,7 +513,7 @@ public class secondactivity extends Activity implements SensorEventListener{
             @Override
             public void onClick(View v) {
             	Toast.makeText(getApplicationContext(), 
-            			"成功退出，单车骑行使用时间： "+p_time/1000+" 秒，需支付"+(p_time > 7200000 ? (1.5+(p_time-7200000)/6000000) : 1.5)+"元！", 
+            			"成功退出，单车骑行使用时间： "+p_time/1000+" 秒，需支付"+((p_time > 7200000 ? (1.5+(p_time-7200000)/6000000) : 1.5)-red_reward)+"元！", 
             			Toast.LENGTH_LONG).show();
 				//播放还车成功的音频
             	showSound(3);

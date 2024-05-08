@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+ 
+	    <TextView
+			android:layout_width="100dp"
+			android:layout_height="20dp"
+			android:layout_marginTop='30dp'
+			android:layout_marginLeft='0dp'
+			android:text="停车坐标："
+			android:textSize="16dp"
+			android:layout_weight="1" />
+	    
+	    <EditText
+	        android:id="@+id/compass_text1"
+			android:layout_width="100dp"
+			android:layout_height="40dp"
+			android:layout_marginTop='20dp'
+			android:layout_marginLeft='100dp'
+			android:hint="0"
+			android:textSize="16sp"
+			android:textColor="#8A2BE2"
+			android:layout_weight="1" />
+	    
+	    <EditText
+	        android:id="@+id/compass_text2"
+			android:layout_width="100dp"
+			android:layout_height="40dp"
+			android:layout_marginTop='20dp'
+			android:layout_marginLeft='200dp'
+			android:hint="0"
+			android:textSize="16sp"
+			android:textColor="#8A2BE2"
+			android:layout_weight="1" />
+	    
+	    <Button
+        android:id="@+id/compass_btn"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="300dp"
+        android:background="#FFC0CB"
+        android:text="确认"
+        android:textColor="#FFC" />   
+
+    
+    <ImageView
+        android:id="@+id/compass_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop='60dp'
+	    android:layout_marginLeft='0dp'
+        android:src="@drawable/map"
+        android:layout_weight="1" />
+ 
+    <!-- 当前位置 -->
+     <ImageView
+        android:id="@+id/compass_sit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop='200dp'
+	    android:layout_marginLeft='150dp'
+        android:src="@drawable/situation"
+        android:layout_weight="1" />
+   <!-- 白包坐标 -->
+    <!-- 左下点 (225,275)-->
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='240dp'
+	     android:layout_marginLeft='170dp'
+         android:text="(650,650)"
+         android:textColor="#000000"
+         android:textSize="12dp" />
+     <!-- 右下点(525,275) -->
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='240dp'
+	     android:layout_marginLeft='230dp'
+         android:text="(850,650)"
+         android:textColor="#000000"
+         android:textSize="12dp" />
+     <!-- 右上点 (525,150)-->
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='160dp'
+	     android:layout_marginLeft='230dp'
+         android:text="(850,350)"
+         android:textColor="#000000"
+         android:textSize="12dp" />
+	  <!-- 左上点 (225,150)-->
+      <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='160dp'
+	     android:layout_marginLeft='170dp'
+         android:text="(650,350)"
+         android:textColor="#000000"
+         android:textSize="12dp" />
+      
+      <!-- 红包坐标 -->
+    <!-- 左下点 -->
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='200dp'
+	     android:layout_marginLeft='90dp'
+         android:text="(310,550)"
+         android:textColor="#0000"
+         android:textSize="12dp" />
+     <!-- 右下点 -->
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='200dp'
+	     android:layout_marginLeft='150dp'
+         android:text="(480,550)"
+         android:textColor="#0000"
+         android:textSize="12dp" />
+     <!-- 右上点 -->
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='90dp'
+	     android:layout_marginLeft='150dp'
+         android:text="(480,200)"
+         android:textColor="#0000"
+         android:textSize="12dp" />
+	  <!-- 左上点 -->
+      <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_marginTop='90dp'
+	     android:layout_marginLeft='90dp'
+         android:text="(310,200)"
+         android:textColor="#0000"
+         android:textSize="12dp" />
+</RelativeLayout>
