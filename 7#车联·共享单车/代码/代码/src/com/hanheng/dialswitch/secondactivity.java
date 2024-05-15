@@ -80,7 +80,6 @@ import android.widget.ToggleButton;
 import android.widget.ImageView;
 import android.media.MediaPlayer;
 
-
 public class secondactivity extends Activity implements SensorEventListener{
 	// 数码管组件
 	private View display;
@@ -162,6 +161,12 @@ public class secondactivity extends Activity implements SensorEventListener{
 	private PowerManager pm;
 	private PowerManager.WakeLock wl;
 	private boolean PM_state =true;
+	
+	//加减按钮
+	private Button plus_btn;
+	private Button sub_btn;
+	//当前温度
+	private NewText temp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -361,6 +366,7 @@ public class secondactivity extends Activity implements SensorEventListener{
 		cpass_img.setImageBitmap(mutableBitmapw);
 		
 		/*----------------------------------------------*/
+		
 		sensor = (SensorManager) getSystemService(SENSOR_SERVICE);//获得SensorManager
 		//获取方向传感器
         Sensor type_compass = sensor.getDefaultSensor(Sensor.TYPE_ORIENTATION);
@@ -503,6 +509,34 @@ public class secondactivity extends Activity implements SensorEventListener{
                 else{
                 	Toast.makeText(getApplicationContext(), "无奖励！！！", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+		
+		//温度加减按钮
+		plus_btn=(Button)findViewById(R.id.temp_btn_plus);
+		sub_btn=(Button)findViewById(R.id.temp_btn_sub);
+		//显示温度
+		temp=(NewText)findViewById(R.id.counterText);
+		//升高温度
+		plus_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	String Cur_Temp_Str = temp.getText().toString();
+            	int Cur_Temp_Int=Integer.parseInt(Cur_Temp_Str);
+            	Cur_Temp_Int++;
+            	String Cur_Temp=Integer.toString(Cur_Temp_Int);
+            	temp.setText(Cur_Temp);
+            }
+        });
+		//降低温度
+		sub_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	String Cur_Temp_Str = temp.getText().toString();
+            	int Cur_Temp_Int=Integer.parseInt(Cur_Temp_Str);
+            	Cur_Temp_Int--;
+            	String Cur_Temp=Integer.toString(Cur_Temp_Int);
+            	temp.setText(Cur_Temp);
             }
         });
 		
