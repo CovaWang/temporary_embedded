@@ -313,32 +313,32 @@
         android:text="登录"
         android:textSize="16sp" />
     
-    <!-- 车1 -->
+    <!--普通单车 -->
      <Button
         android:id="@+id/car1"
         android:layout_width="200dp"
         android:layout_height="46dp"
         android:layout_marginTop="60dp"
      	android:layout_marginLeft="700dp"
-        android:text="车1"
+        android:text="普通单车 "
         android:textSize="16sp" />
-     <!-- 车2 -->
+     <!-- 共享单车 -->
       <Button
         android:id="@+id/car2"
         android:layout_width="200dp"
         android:layout_height="46dp"
         android:layout_marginTop="110dp"
      	android:layout_marginLeft="700dp"
-        android:text="车1"
+        android:text="共享单车"
         android:textSize="16sp" />
-    <!-- 车3 -->
+    <!-- 电池脚蹬单车 -->
        <Button
         android:id="@+id/car3"
         android:layout_width="200dp"
         android:layout_height="46dp"
         android:layout_marginTop="160dp"
      	android:layout_marginLeft="700dp"
-        android:text="车1"
+        android:text="电池脚蹬单车"
         android:textSize="16sp" />
 
 </RelativeLayout>

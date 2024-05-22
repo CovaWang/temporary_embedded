@@ -168,6 +168,11 @@ public class secondactivity extends Activity implements SensorEventListener{
 	//当前温度
 	private NewText temp;
 	
+	private String car_div;
+	private long speed;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -218,31 +223,47 @@ public class secondactivity extends Activity implements SensorEventListener{
         rightvol = 1;
         lock_state = 0;
 		
+        Intent intent = getIntent();
+        //获取Intent中暂存的数据
+	    car_div = intent.getStringExtra("car");
+	    if(car_div=="1"){
+	    	speed=1;
+	    }
+	    else if(car_div=="2"){
+	    	speed=2;
+	    }
+	    else if(car_div=="3"){
+	    	speed=3;
+	    }
+	    else{
+	    	speed=1;
+	    }
+        
 		//计时器监听控制电量
 		time_price.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
 				//默认显示100%状态的电量图
-            	p_time = SystemClock.elapsedRealtime()-time_price.getBase();
+            	p_time = SystemClock.elapsedRealtime()-speed*time_price.getBase();
 				//随时间的变化来主键降低电量
 				//我们设置4个阈值，分别为：
 				//75% 50% 25% 10%
-                if(SystemClock.elapsedRealtime()-time_price.getBase()>=20000){ //一小时的工作时间3600000
+                if(SystemClock.elapsedRealtime()-speed*time_price.getBase()>=20000){ //一小时的工作时间3600000
                 	//此时将图片电量部分显示的图片更改为75%的电量图
 					power_img.setImageResource(power_array[1]);
                 	text_power.setText("75%");
                 }
-                if(SystemClock.elapsedRealtime()-time_price.getBase()>=40000){ //一小时的工作时间3600000
+                if(SystemClock.elapsedRealtime()-speed*time_price.getBase()>=40000){ //一小时的工作时间3600000
                 	//此时将图片电量部分显示的图片更改为50%的电量图
 					power_img.setImageResource(power_array[2]);
                 	text_power.setText("50%");
                 }
-                if(SystemClock.elapsedRealtime()-time_price.getBase()>=80000){ //一小时的工作时间3600000
+                if(SystemClock.elapsedRealtime()-speed*time_price.getBase()>=80000){ //一小时的工作时间3600000
 					//此时将图片电量部分显示的图片更改为25%的电量图
                 	power_img.setImageResource(power_array[3]);
                 	text_power.setText("25%");
                 }
-                if(SystemClock.elapsedRealtime()-time_price.getBase()>=100000){ //一小时的工作时间3600000
+                if(SystemClock.elapsedRealtime()-speed*time_price.getBase()>=100000){ //一小时的工作时间3600000
 					//此时电量过低，可能会导致关锁失败
 					//所以需要进行语音强提示，播放电量过低的音频
                 	showSound(4);
@@ -250,7 +271,7 @@ public class secondactivity extends Activity implements SensorEventListener{
                 	power_img.setImageResource(power_array[4]);
                 	text_power.setText("<10%");
                 }
-                if(SystemClock.elapsedRealtime()-time_price.getBase()>=120000){ //一小时的工作时间3600000
+                if(SystemClock.elapsedRealtime()-speed*time_price.getBase()>=120000){ //一小时的工作时间3600000
 					//系统运行时间超过120000时，系统电量耗尽
                 	//强制系统休眠
                 	pm.goToSleep(SystemClock.uptimeMillis());
@@ -562,6 +583,7 @@ public class secondactivity extends Activity implements SensorEventListener{
 		button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+  
             	Toast.makeText(getApplicationContext(), 
             			"成功退出，单车骑行使用时间： "+p_time/1000+" 秒，需支付"+((p_time > 7200000 ? (1.5+(p_time-7200000)/6000000) : 1.5)-red_reward)+"元！", 
             			Toast.LENGTH_LONG).show();

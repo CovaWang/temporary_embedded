@@ -44,7 +44,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.ImageView;
-
+ 
 public class MainActivity extends Activity implements OnClickListener{
 	private TextView[] text = new TextView[8];
 	private ToggleButton[] tb = new ToggleButton[8];
@@ -55,7 +55,11 @@ public class MainActivity extends Activity implements OnClickListener{
 	private boolean isFZero; //记录初始拨码开关是否正确归零
     private EditText password;
     private Button login;
-	
+    private Button car1;
+    private Button car2;
+    private Button car3;
+    private String car_div="1";
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,10 +83,38 @@ public class MainActivity extends Activity implements OnClickListener{
                 {
                     Toast.makeText(getApplicationContext(), "密码错误", Toast.LENGTH_SHORT).show();//提示用户用户名或密码错误
                 }
+                Intent intent = new Intent(MainActivity.this,secondactivity.class);
+            	intent.putExtra("car", car_div);
+            	//intent.putExtra("guzhang2", guzhang2);
+            	startActivity(intent);
+            }
+        });
+		car1=(Button)findViewById(R.id.car1);
+		car1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+            	car_div="1";
+            }
+        });
+		
+		car2=(Button)findViewById(R.id.car2);
+		car2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+            	car_div="2";
+            }
+        });
+		
+		car3=(Button)findViewById(R.id.car3);
+		car3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+            	car_div="3";
             }
         });
 	}
-
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
